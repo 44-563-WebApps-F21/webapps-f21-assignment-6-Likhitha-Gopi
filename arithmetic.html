@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Arithmetic Operations</title>
+    </head>
+
+<body>
+
+
+    <h1>Likhitha Gopi computes</h1>
+
+    <div class="container border">
+        <form>
+            <div class="row">
+                <label for="value1" class="col-sm-2 col-form-label">Enter a base </label>
+                <input type="number" class="col-sm-2 form-control" id="value1" name="value1" value=10> <br>
+            </div>
+            <div class="row">
+                <label for="value2" class="col-sm-2 col-form-label">Enter an exponent </label>
+                <input type="number" class="col-sm-2 form-control" id="value2" name="value2" value=2> <br>
+            </div>
+            <input type="button" class="col-sm-2 btn btn-primary" onclick="powers()" value="compute">
+        </form>
+    </div>
+    <div class="container border bg-secondary">
+        <p id="result">This text will be replaced </p>
+    </div>
+
+
+    <div class="container border">
+        <form>
+            <input type="radio" id="add" name="operation" onclick="processRadio()">
+            <label for="add">+</label><br>
+            <input type="radio" id="minus" name="operation" onclick="processRadio()">
+            <label for="minus">-</label><br>
+            <input type="radio" id="multiply" name="operation" onclick="processRadio()">
+            <label for="multiply">*</label><br>
+            <input type="radio" id="devide" name="operation" onclick="processRadio()">
+            <label for="devide">/</label><br>
+        </form>
+    </div>
+    <div class="container border bg-primary">
+        <p id="res">Results of Radio buttons will be shown here</p>
+    </div>
+
+
+
+
+
+    <script>
+
+
+        function powers() {
+            console.log("Getting form values")
+            base = document.getElementById("value1").value
+            exponent = document.getElementById("value2").value
+
+            let result = ""
+
+            for (first = 1; first <= exponent; first++) {
+                result = result + " " +
+                    Math.pow(base, first)
+
+            }
+            document.getElementById("result").innerHTML = "powers of " + base + " are: " + result
+        }
+
+        function processRadio() {
+            base = document.getElementById("value1").value
+            exponent = document.getElementById("value2").value
+            result = 0
+            text = ""
+            if (document.getElementById("add").checked == true) {
+                result = +base + +exponent
+                text = "sum of " + base + " and " + exponent + " is " + result
+            } else if (document.getElementById("minus").checked == true) {
+                result = base - exponent
+                text = "Difference of " + base + " and " + exponent + " is " + result
+            } else if (document.getElementById("multiply").checked == true) {
+                result = base * exponent
+                text = "Product of " + base + " and " + exponent + " is " + result
+            } else if (document.getElementById("devide").checked = true) {
+                result = base / exponent
+                text = "Division of " + base + " and " + exponent + " is " + result
+            }
+            document.getElementById("res").innerHTML = text
+        }
+
+
+    </script>
+
+</body>
+
+</html>

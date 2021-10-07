@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cars Html Page</title>
+</head>
+
+<body>
+
+    <h2>Likhitha Gopi orders a car</h2>
+    <div class="container border">
+        <form>
+            <input type="checkbox" id="electric" name="electric" value="electric">
+            <label for="electric" class="">electric </label><br>
+
+            <input type="checkbox" id="ac" name="ac" value="ac">
+            <label for="ac">ac </label><br>
+
+            <input type="checkbox" id="gps" name="gps" value="gps">
+            <label for="gps">gps </label><br>
+
+            <input type="button" class="col-sm-3 btn-primary" onclick="orderCar()" value="Order a Car">
+            <br>
+        </form>
+    </div>
+
+    <div class="container borders bg-secondary">
+        <form>
+            <div class="row">
+                <label for="property" class="col-sm-2 col-form-label">Enter a property</label>
+                <input type="text" class="col-sm-4 form-control" id="property" name="property" value="color"><br>
+            </div>
+            <div class="row">
+                <label for="value" class="col-sm-2 col-form-label">Enter a value</label>
+                <input type="text" class="col-sm-4 form-control" id="value" name="value"><br>
+            </div>
+            <input type="button" class="col-sm-3 btn-primary" onclick="updateCar()" value="Update the Car">
+        </form>
+    </div>
+
+    <div class="container border">
+        <p id="result">This text will be replaced </p>
+    </div>
+
+
+    <script>
+
+        var my_car = {}
+        function orderCar() {
+            my_car = {}
+            if (document.getElementById("electric").checked == true)
+                my_car['electric'] = 'true'
+            else
+                my_car['electric'] = 'false'
+
+            if (document.getElementById("ac").checked == true)
+                my_car['ac'] = 'true'
+            else
+                my_car['ac'] = 'false'
+
+            if (document.getElementById("gps").checked == true)
+                my_car['gps'] = 'true'
+            else
+                my_car['gps'] = 'false'
+            document.getElementById("result").innerHTML = JSON.stringify(my_car)
+            console.log(my_car)
+        }
+
+        function updateCar() {
+            property = document.getElementById("property").value
+            value = document.getElementById("value").value
+            my_car[property] = value
+            document.getElementById("result").innerHTML = JSON.stringify(my_car)
+            console.log(my_car)
+        }
+
+
+    </script>
+
+</body>
+
+</html>
